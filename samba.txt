@@ -1,0 +1,18 @@
+sudo apt-get install samba samba-common
+/home# mkdir share
+/home# chmod 777 share
+/home# vi /etc/samba/smb.conf
+IN END:
+[share]
+    path= /home/share
+    available= yes
+    browseable= yes
+    #public= yes    //不需要密码
+    writable= yes
+/home/share# touch /etc/samba/smbpasswd
+/home/share# smbpasswd -a newName
+root@ubuntu:/home# /etc/init.d/smbd restart
+
+In windows
+ctrl+r
+\\share ipdress
