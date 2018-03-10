@@ -36,4 +36,45 @@ if __name__ == '__main__':
     producter()
 '''
 
+'''
+#greenlet的协程
+import greenlet
+def f():
+    print(12)
+    gr2.switch()        #switch类似于yield,直接切换到gr2
+    print(34)
+    gr2.switch()
+
+def d():
+    print(56)
+    gr1.switch()
+    print(78)
+
+gr1 = greenlet.greenlet(f)  #创建greenlet对象
+gr2 = greenlet.greenlet(d)
+gr1.switch()
+'''
+
+'''
+#gevent的协程,爬虫初步
+from gevent improt monkey
+monkey.patch_all()      #加速IO阻塞监听,提高切换速度
+import gevent
+from urllib.request import urlopen
+
+def f(url):
+    print('get:%s'%url)
+    resp = urlopen(url)
+    data = resp.read()      #IO阻塞,gevent遇见则自动切换
+    print('%d bytes recevied'%len(data))
+
+gevent.joinall(     #连接方法
+    [
+        gevent.spawn(f, 'https://www.python.org/'),      #激活函数,同时激活
+        gevent.spawn(f, 'https://www.baidu.com/'),
+        gevent.spawn(f, 'https://github.com/'),
+    ]
+)
+'''
+
 
