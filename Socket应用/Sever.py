@@ -2,7 +2,7 @@ import socket
 import os
 import subprocess
 
-
+# 阻塞IO
 def Chat(conn):
 	while True:
 		try:
@@ -63,7 +63,7 @@ if __name__ == "__main__":
 	sk.bind(address)
 	sk.listen(3)
 	sk.settimeout(5)
-	sk.setblocking(True)
+	sk.setblocking(True)	#False为非阻塞IO
 	while True:
 		conn, addr = sk.accept()
 		print(conn+'has connected')
