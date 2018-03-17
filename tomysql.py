@@ -3,8 +3,11 @@ import requests
 
 #创建链接
 conn = pymysql.connect(host='127.0.0.1', port=3306, user='root', passwd='toor')
-#创建游标
+#创建元祖游标
 cursor = conn.cursor()
+
+#创建字典游标
+#cursor = conn.cursor(cursor=pymysql.cursors.DictCursor)
 
 #严禁字符串拼接作为参数!这样会sql注入!!!
 
@@ -16,8 +19,11 @@ r = cursor.fetchall()
 print(r)
 
 #执行可迭代时的mysql
-# L = (('女', 'a'),('男', 'b'),('女','c'))
+# L = [('女', 'a'),('男', 'b'),('女','c')]
 # r = cursor.executemany('insert into student(gender, name) values(%s,%s,%s)', L)
+
+#获取最新自增ID
+auto_increment = cursor.lastrowid
 
 #移动游标cursor
 #cursor.scroll(1, mode='relative')   #相对
