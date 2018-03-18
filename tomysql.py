@@ -22,6 +22,12 @@ print(r)
 # L = [('女', 'a'),('男', 'b'),('女','c')]
 # r = cursor.executemany('insert into student(gender, name) values(%s,%s,%s)', L)
 
+#执行存储过程
+cursor.callproc('procname', (1, 'parmeter'))
+#获取执行完存储过程的参数
+cursor.execute('select @_procname_parmeter1,@_procname_parmeter2,@_procname_parmeter3')
+result = cursor.fetchall()
+
 #获取最新自增ID
 auto_increment = cursor.lastrowid
 
