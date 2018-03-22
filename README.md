@@ -8,6 +8,7 @@
 > 4. 多进程
 > 5. 协程
 > 6. MySQL
+> 7. Django
 
 ***
 **network_Base**
