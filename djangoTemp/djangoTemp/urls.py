@@ -15,7 +15,9 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
+from mdjango import views
 
 urlpatterns = [
-    url(r'^admin/', admin.site.urls), #通过index.html访问, views.func处理
+    url(r'^admin/', admin.site.urls),   #后台管理页
+    url(r'', views.func),  #通过空白网页访问, views.func处理响应
 ]
