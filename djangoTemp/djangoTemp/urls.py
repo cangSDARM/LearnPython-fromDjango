@@ -19,5 +19,6 @@ from mdjango import views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),   #后台管理页
-    url(r'', views.func),  #通过空白网页访问, views.func处理响应
+    url(r'^index', views.func),  #通过index网页访问, views.func处理响应
+    url(r'article/<int:article>', views.Article_D, name='Articles'),    #传入参数:int article和定义时相同名称
 ]
