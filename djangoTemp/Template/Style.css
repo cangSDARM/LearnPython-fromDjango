@@ -1,0 +1,37 @@
+
+/* 匹配所有元素 */
+* {
+    margin-left: 2px;
+}
+
+/* 标签 */
+div,p {
+    color: red;
+    background-color: #0033f2;
+}
+
+/* #id */
+#de1 {
+    font-family: 'Segoe UI', 'ubuntu';
+}
+
+/* .class */
+.s2 {
+    margin: 0;
+}
+
+/* ancestor progeny */
+div p{
+    outline-color: #22cc33;
+}
+
+/* parent > child*/
+div > .dvs{
+    display: block;
+}
+
+/* back-contigeous */
+div + span{
+    padding: 2px;
+}
+
