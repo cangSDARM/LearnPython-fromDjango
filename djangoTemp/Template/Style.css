@@ -1,4 +1,8 @@
-
+/*
+ * 文档流
+ * 正常文档流: 将元素布局从上到下,从左到右的顺序排布
+ * 脱离文档流: 将元素从文档流取出进行覆盖(position:fixed,absolute;float)
+*/
 /* 匹配所有元素 */
 * {
     margin: 0px 1px 0px 2px;
@@ -44,7 +48,8 @@ div p{
 
 /* parent > child*/
 div > .dvs{
-    display: block;
+    /* 更改为block标签或inline标签 */
+    display: inline-block;
 }
 
 /* back-contigeous */
@@ -78,7 +83,7 @@ div[id='id']{
 /* [attribute*='al' */
 [id*='al']{
     /*id='value'*/
-    margin-top: 2px;
+    float: left;
 }
 
 /* :active */
@@ -88,5 +93,5 @@ p::before, p::after{
 
 /* :link(没有访问), :hover(鼠标覆盖), :active(按下鼠标), :visited(已访问) */
 a:link{
-    scroll-behavior: smooth;
+    position: fixed;
 }
