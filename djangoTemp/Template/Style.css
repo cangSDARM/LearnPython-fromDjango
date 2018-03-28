@@ -48,7 +48,7 @@ div p{
 
 /* parent > child*/
 div > .dvs{
-    /* 更改为block标签或inline标签 */
+    /* 更改为block标签或inline标签或直接不可见none */
     display: inline-block;
 }
 
@@ -61,13 +61,18 @@ div + span{
 
 /* lable[attribute='value'] */
 div[id='id']{
-    list-style: square;
+    /* position */
+    /* fixed屏幕上绝对定位, absolute相对非static的父标签原位置移动脱离文档流, ralative类似absolute但仍在正常文档流, static默认*/
+    position: fixed;
+    /* bottom top left right设置position*/
+    bottom: 20px;
+    right: 30px;
 }
 
 /* [attribute~='value'] */
 [class~='text']{
     /*class="value another else"*/
-    padding: 1px;
+    list-style: armenian;
 }
 
 /* [attribute$='lue'] */
