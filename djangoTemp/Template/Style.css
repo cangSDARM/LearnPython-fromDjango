@@ -54,7 +54,9 @@ div > .dvs{
 
 /* back-contigeous */
 div + span{
-    padding: 2px;
+    /* float */
+    /* 元素浮动时需要前一个也是浮动, 后面的需要(clear: left|right|both)不允许浮动 */
+    float: left;
 }
 
 /* lable[attribute='value'] */
