@@ -30,11 +30,29 @@ x = 2;      //全局变量
 alert(x);       //弹窗
 console.log(x);     //控制台输出
 
-//void 返回undefined
 function functionName(){
+    //js参数随便传, 通过arguments参数(数组)对象获取动态传入的参数
+    arguments.length;
+
     var y = 0x2;      //不用var是全局变量
     parseInt("1.12a");   //转换成int, string转换失败时出现NaN
     typeof(y);      //查看数据类型
     
     return 0;
 }
+
+//其它的函数声明形式
+var func2 = new Function("参数1","参数2", "参数3", "函数内容");
+
+functionName.length     //参数个数
+void(functionName());   //void 返回undefined
+
+//匿名函数
+var func1 = function(args){
+    return "func1";
+}
+func1();
+//自执行函数
+(function(args){
+    return(arguments.length);
+})(1,2,3)
