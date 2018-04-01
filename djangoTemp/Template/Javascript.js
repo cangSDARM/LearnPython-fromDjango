@@ -35,8 +35,6 @@
 */
 
 x = 2;      //全局变量
-alert(x);       //弹窗
-console.log(x);     //控制台输出
 
 function functionName(){
     //js参数随便传, 通过arguments参数(数组)对象获取动态传入的参数
@@ -69,3 +67,48 @@ func1();
 (function(args){
     return(arguments.length);
 })(1,2,3)
+
+/*-----------------------------------------BOM----------------------------------------------------*/
+//浏览器对象模型, 对浏览器窗口进行访问和操作
+
+//window: 一个html文件对应一个window对象
+console.log(x);     //控制台输出
+window.alert(x);       //弹窗, 实际对于window而言是个全局对象所以可以省略window, 直接使用alert()
+confirm("消息");          //显示有确认/取消按钮的对话框
+prompt("提示");           //显示可提示用户输入的对话框
+open();             //打开一个新窗口或查找窗口
+close();
+var id = setInterval(functionName, time);      //按照指定周期调用函数或表达式
+clearInterval(id);
+var id = setTimeout(functionName, time);       //在指定时间后调用函数或表达式
+clearTimeout(id);
+scrollTo();         //将内容滚动到指定坐标
+
+//history: 包含用户访问过的URL
+history.length();   //历史URL数量
+history.forward();  //向前
+history.back();
+history.go();       //直接跳(-1:back, 1:forword)
+
+//location: 包含当前URL的信息
+location.reload(forceReload)   //刷新
+location.href       //返回当前页面的 URL 或跳转
+location.hostname   //返回 web 主机的域名
+location.pathname   //返回当前页面的路径和文件名
+location.port       //返回 web 主机的端口 （80 或 443）
+location.protocol   //返回所使用的 web 协议（http:// 或 https://）
+location.pathname   //返回 URL 的路径名
+location.assign()   //加载新的文档
+
+//screen: 包含有关用户屏幕的信息
+screen.availWidth   //可用的屏幕宽度
+screen.availHeight  //可用的屏幕高度
+
+//navigator: 包含有关访问者浏览器的信息, 可以被篡改
+
+/*----------------------------------------DOM--------------------------------------------------------*/
+//文档对象模型, 对html文档的标签和内容进行操作
+//文档: document, 标签: element, 属性: attribute, 文本: text, 注释: comment
+// html的DOM 和 XML的DOM 相同
+var re = document.getElementById("Id");
+re.value = "id";           //id的value属性
