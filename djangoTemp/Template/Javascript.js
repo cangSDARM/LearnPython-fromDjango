@@ -20,6 +20,12 @@
     * var b = { 2:2, 3:3, 4:3};  //类似字典
     *     for(var i in b);    //i取key
     * var c = (1, 2, 34, 5);     //元祖
+    * var d = new Date();     //现在的时间
+    * var e = new RegExp("规则", "模式(g:全局通用; i:不区分大小写)");     //正则表达式
+    * var e = /规则/模式
+    *     e.text("需要匹配的字符串")    //boolean
+    *     string.match(e)           //arrary
+    *     string.search(e)           //index
  * 一些(为真)逻辑表达
     * (NaN表达式一定为false)
     * null == undefined
