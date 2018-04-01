@@ -15,6 +15,8 @@
  * 复杂数据类型
     * var a = [ 1, 2, 3, "sse"];   //数组
     *     for(var i in a);    //i取a的下标
+    *     a.shift/a.unshift   //从栈底操作
+    *     a.push/a.pop        //从栈顶操作
     * var b = { 2:2, 3:3, 4:3};  //类似字典
     *     for(var i in b);    //i取key
     * var c = (1, 2, 34, 5);     //元祖
@@ -36,7 +38,12 @@ function functionName(){
 
     var y = 0x2;      //不用var是全局变量
     parseInt("1.12a");   //转换成int, string转换失败时出现NaN
-    typeof(y);      //查看数据类型
+
+    var res = ["hello", "js", "world"].join("..")   //res="hello..js..world"
+    //python: res = "..".join(['hello', 'js', 'world'])
+
+    typeof(y);      //查看数据类型, 用new的对象检测永远是object
+    y instanceof String;    //判断是否是String对象
     
     return 0;
 }
