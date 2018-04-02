@@ -112,3 +112,19 @@ screen.availHeight  //可用的屏幕高度
 // html的DOM 和 XML的DOM 相同
 var re = document.getElementById("Id");
 re.value = "id";           //id的value属性
+
+//Event
+onclick;    //单击
+ondblclick; //双击
+onfocus;    //获取焦点(Ins)
+onblur;     //失去焦点(Ins)
+onchange;   //域的内容被改变
+onkeypress; //按住
+onkeydown;
+onkeyup;
+onload;     //完成加载
+onmousedown;
+onmousemove;
+onmouseover;
+onselect;   //文本被选中
+onsubmit;   //被提交
