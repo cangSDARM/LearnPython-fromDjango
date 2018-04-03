@@ -114,6 +114,13 @@ var re = document.getElementById("Id");
 re.value = "id";           //id的value属性
 
 //Event
+/*两种绑定event方法
+1. 直接写在标签里, 有返回时需: return + functionName
+2. document.getElementById("id").onsubmit = function check(){}
+*/
+initEvent();	    //初始化新创建的 Event 对象的属性
+preventDefault();	//通知浏览器不要执行与事件关联的默认动作, 通常阻止数据发向后端
+stopPropagation();	//不向外派发事件, 通常防止鼠标穿透
 onclick;    //单击
 ondblclick; //双击
 onfocus;    //获取焦点(Ins)
@@ -126,5 +133,21 @@ onload;     //完成加载
 onmousedown;
 onmousemove;
 onmouseover;
+onmouseout;
 onselect;   //文本被选中
-onsubmit;   //被提交
+onsubmit;   //被提交, 只能绑在form标签
+
+/*对html标签的增删改查
+ *增
+ *  document.createElement();
+ *  document.appendChild();
+ *删
+ *  parentElement.removeChild();
+ *改
+ *  setAttribute();
+ *  innerHTML;
+ * 改CSS
+ *  ele.style.fontSize="30px";
+ *查
+ *  document.getElementById();
+ */
