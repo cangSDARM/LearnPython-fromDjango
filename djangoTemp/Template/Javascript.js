@@ -36,6 +36,7 @@
 
 x = 2;      //全局变量
 
+<div onclick="functionName(this)">divv</div>    //this指代该标签
 function functionName(){
     //js参数随便传, 通过arguments参数(数组)对象获取动态传入的参数
     arguments.length;
@@ -149,6 +150,11 @@ onsubmit;   //被提交, 只能绑在form标签
  *  innerText;  //不能渲染
  * 改CSS
  *  ele.style.fontSize="30px";
+ * 改CLASS
+ *  ele.classList.add();
  *查
  *  document.getElementById();
  */
+
+//属性动作修改
+// <a href="javascript:functionName();"></a>    ,调用js方法
