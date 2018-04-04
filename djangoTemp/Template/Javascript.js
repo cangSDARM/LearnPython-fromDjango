@@ -146,6 +146,7 @@ onsubmit;   //被提交, 只能绑在form标签
  *改
  *  setAttribute();
  *  innerHTML;
+ *  innerText;  //不能渲染
  * 改CSS
  *  ele.style.fontSize="30px";
  *查
