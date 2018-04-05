@@ -3,6 +3,8 @@
 
 jQuary; //jQuary对象, 可以简写为$
 
+//参考文档: jquery.cuishifeng.cn/
+
 /*
  ----------------------- 选择器 ----------------------
  *基本
@@ -30,6 +32,17 @@ jQuary; //jQuary对象, 可以简写为$
  *  $(".test").parent() $(".test").parents() $(".test").parentUntil()
  *  $("div").siblings()
 */
+
+//jquery循环
+$.each(loopArray, function(index, value){
+    console.log(index + ":" + value);
+})
+$.each(loopDic, function(key, value){
+    console.log(key + ":" + value);
+})
+$("ul li").each(function(){
+    $(this).val("loop");   //==this.value
+})
 
 $("#test").html();  //== document.getElementById("test").innerHTML;
 $("*").css("color","red").css("background","yellow");  //修改css
