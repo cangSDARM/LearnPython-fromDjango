@@ -56,6 +56,14 @@
                     ele[i].classList.add("hide");
                 }
             }
+
+            function text(){    //1秒后打印9个9
+                for(var i=0; i<9;i++){
+                    setTimeout(function inner(){
+                        console.log(i);
+                    }, 1000);
+                }
+            }
         </script>
     </head>
     <body>
