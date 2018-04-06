@@ -10,6 +10,7 @@
 > 6. MySQL
 > 7. Django
 > 8. EcmaScript
+> 9. jQuary
 
 ***
 **network_Base**
