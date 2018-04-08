@@ -55,7 +55,7 @@ ROOT_URLCONF = 'djangoTemp.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR+"/Template",],    #添加网页路径
+        'DIRS': [os.path.join(BASE_DIR, "Template"),],    #添加网页路径
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
