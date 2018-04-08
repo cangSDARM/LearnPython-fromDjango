@@ -13,6 +13,7 @@
         |       |-  tests.py
         |       |-  migrations
         |-  Template                模板
+        |-  Statics                 JS,CSS,img等静态文件路径
         |-  db.sqlite3              数据库
         |-  manage.py               Django项目管理
 

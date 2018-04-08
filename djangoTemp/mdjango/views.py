@@ -23,6 +23,7 @@ def func(req):  #req 请求头
 def Article_D(request, article):
     return HttpResponse("articles,%d" % article) #返回文本内容
 
+'''
 #-------------------------------数据库操作-------------------------------
 # ------------------------------增
 #1
@@ -62,6 +63,7 @@ def Article_D(request, article):
 # 数据排序
     models.Article.objects.order_by("id")
 #---------------------------------------------------------------------------------------
+'''
 
 #模板语言
 def temlateLangue(req):
