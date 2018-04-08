@@ -7,7 +7,7 @@
         |       |-  wsgi.py         服务器使用WSGI部署的文件
         |-  application             app
         |       |-  admin.py
-        |       |-  views.py        视图
+        |       |-  views.py        视图(数据库操作, 模板语言)
         |       |-  apps.py
         |       |-  models.py       模型
         |       |-  tests.py
@@ -35,7 +35,7 @@ HTTP基于请求/相应, 无状态
 * python3 manage.py createsuperuser     创建管理员allen/django030410
 * python3 manage.py startapp appName   创建app
 * python3 manage.py makemigrations 创造数据迁移
-* python3 manage.py migrate 迁移
+* python3 manage.py migrate 创建表结构, Django会自动添加一个id作为主键
 
 ***
 
