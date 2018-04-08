@@ -46,3 +46,24 @@ $("ul li").each(function(){
 
 $("#test").html();  //== document.getElementById("test").innerHTML;
 $("*").css("color","red").css("background","yellow");  //修改css
+
+//扩展方法
+(function($){
+    //扩展方法通常写在自执行函数内, 扩展方法之间的全局变量可以不影响其它函数(私有域)
+    //不写在自执行函数内也可以,但不推荐
+    $.extend({
+        functionName:function(){
+            return 0;
+        }
+    });
+
+    //需要找到节点才可调用
+    $.fn.extend({
+        print:function(){
+            console.log($(this).html());    //打印内容
+        }
+    });
+})(jQuary);
+
+$.functionName();   //调用
+$("p").print();     //调用
