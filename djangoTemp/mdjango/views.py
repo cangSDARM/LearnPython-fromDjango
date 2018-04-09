@@ -94,4 +94,5 @@ def temlateLangue(req):
         {"username":"xxx", "sex":1, "email":000}, 
         {"username":"yyy", "sex":1, "email":111},
     ]
+ 前端注释: {# 内容 #}
 '''

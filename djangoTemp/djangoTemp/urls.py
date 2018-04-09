@@ -18,6 +18,16 @@ from django.contrib import admin
 from mdjango import views
 
 urlpatterns = [
+    #url(正则表达式, 处理函数, 参数, 别名)
+#处理函数添加参数:
+    #通过正则表达式
+    #1 包含组(用括号括的内容), 视作str参数
+    #2 包含(?<groupname>正则表达式),则参数以 groupname为参数名传递
+    #通过参数
+    #1 字典:{"paramname":value},则参数以 paramname为参数名传递
+#别名:
+    #name="Articles"表示路径的别名,防止后台更改引起前端更改.前端写法: {% url "Articles" %}
+    
     url(r'^admin/', admin.site.urls),   #后台管理页
     url(r'^index', views.func),  #通过index网页访问, views.func处理响应
     url(r'article/<int:article>', views.Article_D, name='Articles'),    #传入参数:int article和定义时相同名称
