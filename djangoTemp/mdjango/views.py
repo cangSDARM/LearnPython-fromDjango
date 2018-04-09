@@ -19,6 +19,8 @@ def func(req):  #req 请求头
         f.close()
 
     return render(req, 'index.html')     #渲染网页并返回, 第一个参数必须为请求头
+    #return render_to_response('index.html')    #和render类似
+    #return redirect('index.html')  #页面跳转
 
 def Article_D(request, article):
     return HttpResponse("articles,%d" % article) #返回文本内容
@@ -65,12 +67,14 @@ def Article_D(request, article):
 #---------------------------------------------------------------------------------------
 '''
 
-#模板语言
+#-----------------------------------------模板语言---------------------------------------
 def temlateLangue(req):
     time = datetime.datetime.now()  #后端动态数据
     
     return render(req, "temp.html", {"d":time})
+    #return render(req, "temp.html", locals())  #使用locals()传递所有函数内部变量,前端直接使用本地变量名指代
 '''
+-----------------------------------------单个替换
  发送:
     {"d":time}
  前端:
@@ -79,6 +83,7 @@ def temlateLangue(req):
     time
  d就可以动态替换为time
 
+-----------------------------------------循环替换
  发送:
     {"list":list}
  前端:
@@ -94,5 +99,7 @@ def temlateLangue(req):
         {"username":"xxx", "sex":1, "email":000}, 
         {"username":"yyy", "sex":1, "email":111},
     ]
- 前端注释: {# 内容 #}
+-----------------------------------------注释:
+ 前端:
+    {# 内容 #}
 '''
