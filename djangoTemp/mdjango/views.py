@@ -20,7 +20,7 @@ def func(req):  #req 请求头
 
     return render(req, 'index.html')     #渲染网页并返回, 第一个参数必须为请求头
     #return render_to_response('index.html')    #和render类似
-    #return redirect('index.html')  #页面跳转
+    #return redirect('/index')  #函数跳转, 通过urls的路径跳转到相关函数
 
 def Article_D(request, article):
     return HttpResponse("articles,%d" % article) #返回文本内容
