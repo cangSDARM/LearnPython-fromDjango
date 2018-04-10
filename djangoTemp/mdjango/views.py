@@ -72,6 +72,14 @@ def temlateLangue(req):
     time = datetime.datetime.now()  #后端动态数据
     
     return render(req, "temp.html", {"d":time})
+    #render(request, template, context)
+    #   template:
+    #       from django.template import Template
+    #       t = Template("hello{{ name }}")
+    #   context:
+    #       from django.template import Context
+    #       c = Context({"name": 123 })
+    #t.render(c)    #hello123
     #return render(req, "temp.html", locals())  #使用locals()传递所有函数内部变量,前端直接使用本地变量名指代
 '''
 -----------------------------------------单个替换
@@ -82,24 +90,59 @@ def temlateLangue(req):
  后端:
     time
  d就可以动态替换为time
-
+-----------------------------------------过滤器
+ 前端:
+    {{ 处理对象|相关方法|相关方法2 }}     #对处理对象执行相关方法, 可以拼接
+    {{ s|add:5 }}   #对s加5, 过滤器方法和参数之间用:隔开
+-----------------------------------------防治跨站攻击验证
+ 前端:
+    {% csrf_token %}    #form表单需要
+-----------------------------------------起别名
+ 前端:
+    {% with f=slllllllllllllijweo %}  #和python的with用法相同
+    {{ f }}
+    {% endwith %}
+-----------------------------------------转义
+ 前端:
+    {% verbatim %}
+    {{ value }}
+    {% endverbatim %}
+-----------------------------------------渲染后端标签
+ 前端:
+    1.
+    {% autoescape off %}
+    {{ value }}
+    {% endautoescape %}
+    2.
+    {{ value|safe }}
+-----------------------------------------逻辑判断
+ 前端:
+    {% if 只能是bool值明确的语句,不能判断 %}
+    {% elif ... %}
+    {% else ... %}
+    {% endif %}
 -----------------------------------------循环替换
  发送:
     {"list":list}
  前端:
     {% for i in list %}
+        {{ forloop.counter }}   #循环次数, 从一开始
+        {{ forloop.counter0 }}   #循环次数, 从零开始
+        {{ forloop.revcounter }}   #循环次数, 翻转计数
         <tr>
             <td>{{i.username}}</td>
             <td>{{i.sex}}</td>
             <td>{{i.email}}</td>
         </tr>
-    {% end for %}
+    {% endfor %}
+    {{ list.2 }}    #4, 后端的属性/数组/字典/元祖等负杂数据结构都可以通过.调用
  后端:
     list = [
         {"username":"xxx", "sex":1, "email":000}, 
         {"username":"yyy", "sex":1, "email":111},
+        4,
     ]
------------------------------------------注释:
+-----------------------------------------注释
  前端:
     {# 内容 #}
 '''
