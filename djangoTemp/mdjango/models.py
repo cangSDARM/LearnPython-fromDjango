@@ -8,14 +8,20 @@ class Article(models.Model):
     price = models.IntegerField()   #数字
 
 '''
-#-------------------------------数据库操作-------------------------------
+#--------------------------数据库操作-ORM：Object Relational Mapping(关系对象映射)-----------------------
+#数据库查询objects返回一个QuerySet对象
+#可迭代,可切片,惰性计算(查询优化)
+# books=models.Book.objects.all()[:10]  #切片
+# models.Publish.objects.all().iterator() #迭代
 # ------------------------------增
 #1
     models.Article.objects.create(
         title = "e",text = "t",)
 #2
-    test1 = models.Article(title='runoob', text='file')
-    test1.save()
+    test1 = models.Article.objects.create(**{"title":'runoob', "text":'file'})
+#3
+    tes1 = models.Article.objects(title="xx", text="nool")
+    tes1.save()
 # ------------------------------删
 # 删除id=1的数据
 #1
