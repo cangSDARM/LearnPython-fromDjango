@@ -7,9 +7,9 @@
         |       |-  wsgi.py         服务器使用WSGI部署的文件
         |-  application             app
         |       |-  admin.py
-        |       |-  views.py        视图(数据库操作, 模板语言)
+        |       |-  views.py        视图(模板语言)
         |       |-  apps.py
-        |       |-  models.py       模型
+        |       |-  models.py       模型(数据库操作)
         |       |-  tests.py
         |       |-  migrations
         |-  Template                模板

@@ -1,0 +1,25 @@
+<!-- 模板的继承 -->
+<!-- ****************************模板**************************************-->
+<!DOCTYPE html>
+<html>
+    <title>
+        {% block title %}
+            <!-- 子模板可重载部分 -->
+        {% endblock %}
+    </title>
+    <body>
+        {% block content %}
+        {% endblock %}
+
+        {% block footer %}
+            <p class="cap"></p> {# 子模板有可能替换部分 #}
+        {% endblock %}
+    </body>
+</html>
+
+<!-- ******************************实现的内容************************************-->
+{% extends "base.html" %}
+{% block title %} 实现的内容 {% endblock %}
+{% block content %} 实现的内容 {% endblock %}
+{% block footer %} 实现的内容 {% endblock %}
+{{ bloc.super }}    {# 调用模板的内容 #}
