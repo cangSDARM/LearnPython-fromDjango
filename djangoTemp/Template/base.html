@@ -18,8 +18,8 @@
 </html>
 
 <!-- ******************************实现的内容************************************-->
-{% extends "base.html" %}
+{% extends "base.html" %}   {# 必须要在开头 #}
 {% block title %} 实现的内容 {% endblock %}
 {% block content %} 实现的内容 {% endblock %}
 {% block footer %} 实现的内容 {% endblock %}
-{{ bloc.super }}    {# 调用模板的内容 #}
+{{ block.super }}    {# 调用模板的内容, 写在block里 #}
