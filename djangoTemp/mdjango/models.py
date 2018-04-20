@@ -28,8 +28,11 @@ class Article(models.Model):
 ## 一对多外键: 
         publiser_id = 2, 通过外联表的id关联
         publiser = pub[2], 必须跟对象
-## 多对多:
+## 多对多: add增加, remove取消
+    正向
         models.Article.authors.add(obj), 只能通过对象绑定
+    反向
+        author.article_set.add(*Article)  #Article大写变小写
 # ------------------------------删
 # 删除id=1的数据
 #1
