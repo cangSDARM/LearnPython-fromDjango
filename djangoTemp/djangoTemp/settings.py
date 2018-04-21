@@ -79,6 +79,20 @@ DATABASES = {   #数据库配置
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
+
+    '''
+    __init__中:
+        import pymysql
+        pymysql.install_as_MySQLdb()
+    'sql':{
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': '数据库名',
+        'HOST': '数据库ip',
+        'POST': '数据库端口',
+        'USER': '用户名',
+        'PASSWORD': '密码',
+    }
+    '''
 }
 
 

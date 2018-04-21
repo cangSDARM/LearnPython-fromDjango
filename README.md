@@ -11,6 +11,7 @@
 > 7. Django
 > 8. EcmaScript
 > 9. jQuary
+> 10. AJAX
 
 ***
 **network_Base**
