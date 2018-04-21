@@ -71,5 +71,21 @@ class Article(models.Model):
     models.Article.objects.filter(name='seven').order_by('-id')   # desc
 # regex正则匹配，iregex 不区分大小写
     models.Article.objects.get(title__regex=r'^(An?|The) +')
+# 关联查询
+    models.Article.objects.filter(author__id = 0).values('author__name')   #Article和Author关联表
+# 聚合查询 aggregate
+    from django.db.models import Avg, Min, Sum, Max
+    models.Article.objects.all().aggregate(Avg('price'))    #在QuerySet上进行查询, 返回一个字典
+# 分组查询 annotate
+    models.Article.objects.all().annotate(Avg('price'))     #对结果分组, 返回多个字典组成的列表
+# F查询 
+    from django.db.models import F
+    models.Article.objects.update( price = F('price') + 20)     #专门对对象的某列值进行操作
+# Q查询
+    from django.db.models import Q      #复杂多条件查询
+    models.Article.objects.filter(Q(id = 3)|Q(price = '20'))  #或
+    models.Article.objects.filter(Q(id = 3)&Q(price = '20'))  #并
+    models.Article.objects.filter(~Q(price = '20'))           #非
+    models.Article.objects.filter(~Q(price = '20'), title = 's')  #Q对象和条件混合, Q对象需要放前面
 #---------------------------------------------------------------------------------------
 '''
