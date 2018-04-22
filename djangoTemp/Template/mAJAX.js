@@ -21,7 +21,7 @@
  * }
  */
 
-// --------------------------------四步操作
+// --------------------------------四步操作__JS
 //1. 创建核心对象(XMLHTTPRequest)
 function creatXMLHttpRequest(){
     var xmlHead;
@@ -41,13 +41,30 @@ function creatXMLHttpRequest(){
 var xmlHttpRequest = creatXMLHttpRequest();
 //2. 使用核心对象打开与服务器链接
 xmlHttpRequest.open("POST", "/index", true);    //open(请求方式, URL, 是否异步)
-//3. 发送请求 [-Get请求:send(null)-]
-xmlHttpRequest.send(null);      //send(请求体)
+//3. 发送请求
+xmlHttpRequest.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");   //POST必须设置请求头
+xmlHttpRequest.send(null);      //send(请求体:"str=value")[-Get请求:send(null)-]
 //4. 注册监听, 监听服务器响应
 xmlHttpRequest.onreadystatechange = function(){ // 指定监听函数, 在对象状态发生变化时调用,执行4次!
     //readyState[查看对象状态, 4标示监听响应结束]
     //status[服务器响应状态码, 服务器响应结束后才有]
     if(xmlHttpRequest.readyState == 4 && xmlHttpRequest.status == 200){
-        var date = xmlHttpRequest.responseText;     //获取服务器响应体
+        var date = xmlHttpRequest.responseText;     //获取服务器响应体, 后端的httpresponse
     }
 };
+
+//---------------------------------基于jQuary
+//-------------$.ajax()
+/*
+$.ajax(
+    url("/index"),
+    type("POST"),
+)
+*/
+//-------------简单方式
+$.post("/index", {name:"alex"}, function(data, statusTest, jqh){     //post(url, [data], [callback], [type:text/html/json/script])
+    alert(data);    //data是后端返回数据
+    alert(statusTest);  //状态文本, 只有"success"和"error"
+    alert(jqh);     //核心对象
+});
+$.get();    //get(url, [data], [callback], [type])
