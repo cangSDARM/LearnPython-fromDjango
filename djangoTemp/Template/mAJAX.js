@@ -55,16 +55,31 @@ xmlHttpRequest.onreadystatechange = function(){ // 指定监听函数, 在对象
 
 //---------------------------------基于jQuary
 //-------------$.ajax()
-/*
+// -1
+$.ajax({
+    url:"/index",
+    type:"POST",
+    data:{
+        a:1,
+        b:"name",
+    },
+    traditional:true,   //数据若是复杂结构, 需要加
+    processData:true,  //是否对数据预处理
+    contentType:text,
+    dataType:JSON,      //要求后端传输数据类型
+});
+// -2
 $.ajax(
     url("/index"),
     type("POST"),
-)
-*/
+);
 //-------------简单方式
 $.post("/index", {name:"alex"}, function(data, statusTest, jqh){     //post(url, [data], [callback], [type:text/html/json/script])
     alert(data);    //data是后端返回数据
+    dates = JSON.parse(data);   //将后端json字符串转为json对象
     alert(statusTest);  //状态文本, 只有"success"和"error"
     alert(jqh);     //核心对象
 });
 $.get();    //get(url, [data], [callback], [type])
+$.getJSON();    //type=Json的get
+$.getscript();  //getscript(scriptURL, callback) 在callback中调用外部js文件的function
