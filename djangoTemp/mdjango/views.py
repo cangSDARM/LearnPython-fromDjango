@@ -23,6 +23,7 @@ def func(req):  #req 请求头
     #return redirect('/index')  #函数跳转, 通过urls的路径跳转到相关函数
 
 def Article_D(request, article):
+    HttpResponse.status_code = "404"    #模拟状态码错误
     return HttpResponse("articles,%d" % article) #返回文本内容
 
 #-----------------------------------------模板语言---------------------------------------

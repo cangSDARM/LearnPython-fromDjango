@@ -12,6 +12,7 @@
 > 8. EcmaScript
 > 9. jQuary
 > 10. AJAX
+> 11. 跨域请求
 
 ***
 **network_Base**

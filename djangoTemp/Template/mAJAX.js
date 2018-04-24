@@ -66,7 +66,17 @@ $.ajax({
     traditional:true,   //数据若是复杂结构, 需要加
     processData:true,  //是否对数据预处理
     contentType:text,
-    dataType:JSON,      //要求后端传输数据类型
+    dataType:"json",      //要求后端传输数据类型
+    beforeSend:function(XMLHttpRequest){},    //发送数据前调用. 用于修改请求头, 返回false可以取消发送请求
+    success:function(data){     //返回成功后调用
+        console.log(typeof data);
+    },
+    error:function(data){},     //返回错误时调用
+    complate:function(XMLHttpRequest){},    //传输步骤完成调用
+    statusCode:{        //根据状态码调用
+        "404":function(){},
+        "403":function(){}
+    }
 });
 // -2
 $.ajax(
@@ -77,6 +87,7 @@ $.ajax(
 $.post("/index", {name:"alex"}, function(data, statusTest, jqh){     //post(url, [data], [callback], [type:text/html/json/script])
     alert(data);    //data是后端返回数据
     dates = JSON.parse(data);   //将后端json字符串转为json对象
+    datas = JSON.stringify(dates);  //将json对象转为json字符串
     alert(statusTest);  //状态文本, 只有"success"和"error"
     alert(jqh);     //核心对象
 });
