@@ -7,7 +7,7 @@
         |       |-  wsgi.py         服务器使用WSGI部署的文件
         |-  application             app
         |       |-  admin.py
-        |       |-  views.py        视图(模板语言)
+        |       |-  views.py        视图(模板语言, cookie)
         |       |-  apps.py
         |       |-  models.py       模型(数据库操作)
         |       |-  tests.py
@@ -40,7 +40,7 @@ HTTP基于请求/相应, 无状态
 
 ***
 
-*相应头 ResponseHeaders*
+*响应头 ResponseHeaders*
 > Content-Type:响应体使用编码
 > Set-Cookie:响应给客户端的cookie
 > Date:响应的时间

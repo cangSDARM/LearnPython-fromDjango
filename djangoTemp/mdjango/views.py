@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from mdjango import models
 import os
 import datetime
+import requests
 
 # Create your views here.
 def func(req):  #req 请求头
@@ -22,9 +23,24 @@ def func(req):  #req 请求头
     #return render_to_response('index.html')    #和render类似
     #return redirect('/index')  #函数跳转, 通过urls的路径跳转到相关函数
 
+'''
+------------------------------------------Cookie---------------------------------------
+1. 用于服务器验证用户, 提取用户相关信息
+2. 跨域cookie理论无法共享
+'''
 def Article_D(request, article):
     HttpResponse.status_code = "404"    #模拟状态码错误
+
+    if(!request.Cookie.get("Name")):        #获取Cookie
+        rep.set_cookie("Name", "alex")      #设置Cookie
+        rep = redirect("/index")
     return HttpResponse("articles,%d" % article) #返回文本内容
+#-----------------------cookie模拟爬虫
+def CookieSim():
+    ia = requests.get("URL")    #登录页面获取cookie
+    ia2 =  requests.post("URL", data={}, cookies=ia.cookies.get_dirt()) #用户登录,携带上次cookie,后台对cookie的gpsd授权
+    gpsd = ia.cookies.get_dirt()['gpsd']    #操作
+    ia3 = requests.post("URL", cookies={'gpsd'=gpsd})
 
 #-----------------------------------------模板语言---------------------------------------
 def temlateLangue(req):
