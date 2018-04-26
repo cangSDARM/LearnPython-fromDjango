@@ -34,7 +34,7 @@ INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
-    'django.contrib.sessions',
+    'django.contrib.sessions',  #session
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'mdjango',  #链接app
@@ -42,7 +42,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware', #session文件配置
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',   #跨站请求,安全性
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -137,3 +137,34 @@ STATIC_URL = '/static/' #静态文件路径(前端用), 保证前端和后端分
 STATICFILES_DIRS = (    #静态文件路径(后端用)
     os.path.join(BASE_DIR, "Statics"),
 )
+
+#session配置文件
+
+#session默认保存在数据库里
+
+#文件
+SESSION_ENGINE = 'django.contrib.sessions.backends.file'  # 引擎
+SESSION_FILE_PATH = None  # 缓存文件路径, 如果为None, 则使用tempfile模块获取一个临时地址tempfile.gettempdir()
+
+#缓存 redis memcache
+#SESSION_ENGINE = 'django.contrib.sessions.backends.cache'        # 引擎
+#SESSION_CACHE_ALIAS= 'default'  #使用的缓存别名, 默认内存缓存
+
+#缓存+数据库 读(先读内存, 内存没有读取数据库, 存到内存). 写(先写内存再写数据库)
+#SESSION_ENGINE='django.contrib.sessions.backends.cached_db'        # 引擎
+
+#浏览器(相当于没有用session, 又把敏感信息保存到客户端了)
+#SESSION_ENGINE = 'django.contrib.sessions.backends.signed_cookies'   # 引擎
+
+SESSION_COOKIE_NAME="sessionID"  # Session的cookie保存在浏览器上时的key, 即:sessionID＝随机字符串
+SESSION_COOKIE_PATH="/"     # Session的cookie保存的路径
+SESSION_COOKIE_DOMAIN = None    # Session的cookie保存的域名
+SESSION_COOKIE_SECURE = False   # 是否Https传输cookie
+SESSION_COOKIE_HTTPONLY = True      # 是否Session的cookie只支持http传输
+SESSION_COOKIE_AGE = 600000     # Session的cookie失效日期（2周） 默认1209600秒
+SESSION_EXPIRE_AT_BROWSER_CLOSE =True   # 是否关闭浏览器使得Session过期
+
+SESSION_SAVE_EVERY_REQUEST = True
+#如果你设置了session的过期时间为30分钟:
+# 是False时, 30分钟过后session准时失效
+# 是True时, 在30分钟期间有请求服务端, 就不会过期
