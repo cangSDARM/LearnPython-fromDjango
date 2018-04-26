@@ -30,14 +30,15 @@ def Article_D(request, article):
 '''
 ------------------------------------------Cookie---------------------------------------
 1. 用于服务器验证用户, 提取用户相关信息
-2. 保存于客户端的键值对文件
+2. 保存于客户端的文件
 3. 跨域cookie理论无法共享
 '''
-#--------------------------------------cookie模拟爬虫
 def CookieSim(req):
     if(!req.COOKIES.get("Name")):        #获取Cookie
         rep = HttpResponse("/index")
-        rep.set_cookie("Name", "alex", max_age=10, '''expires''', path="")      #设置Cookie, 周期为10s(expires为具体时间), path为生效路径
+        rep.set_cookie("Name", "alex", max_age=10, '''expires,'''path="/", domain="biadu.com", secure=True)
+        #设置Cookie, 周期为10s(expires为ie5之前的), path为cookie生效URL, domin表示cookie生效域名, secure表示需要https
+        return rep
 
     ia = requests.get("URL")    #登录页面获取cookie
     ia2 =  requests.post("URL", data={}, cookies=ia.cookies.get_dirt()) #用户登录,携带上次cookie,后台对cookie的gpsd授权
