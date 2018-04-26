@@ -13,6 +13,7 @@
 > 9. jQuary
 > 10. AJAX
 > 11. 跨域请求
+> 12. cookie and sessions
 
 ***
 **network_Base**
