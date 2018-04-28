@@ -1,11 +1,28 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from mdjango import models
+from django.views.decorators.csrf import csrf_exempt, csrf_protect
 import os
 import datetime
 import requests
 
-# Create your views here.
+from django.utils.decorators import method_decorator
+from django import views
+class loginClass(views.View):
+    #可选函数名 = ['get', 'post', 'put', 'patch', 'delete', 'head', 'options', 'trace']
+    #分发. 所有方法的装饰器
+    def dispatch(self, request, *args, **kwargs):
+        print("before")
+        ret = super(loginClass, self).dispatch(request, *args, **kwargs)
+        print("after")
+        return ret
+
+    #@method_decorator(methodName)      #添加装饰器
+    def get(self, request, *args, **kwargs):
+        pass
+
+#@csrf_exempt  #免除csrf检查
+@csrf_protect   #使用csrf检查
 def func(req):  #req 请求头
     print('request %s' %req.GET)     #获取from表单get数据
     print('request %s' %req.POST)    #post

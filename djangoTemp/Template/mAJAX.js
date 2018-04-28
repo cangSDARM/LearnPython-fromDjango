@@ -56,12 +56,16 @@ xmlHttpRequest.onreadystatechange = function(){ // 指定监听函数, 在对象
 //---------------------------------基于jQuary
 //-------------$.ajax()
 // -1
+token = $('[name = "csrfmiddlewaretocken"]').val()
 $.ajax({
     url:"/index",
     type:"POST",
+    headers:{'X-CSRFToken':token},  //csrf
     data:{
-        a:1,
-        b:"name",
+        'a':1,
+        'b':"name",
+        'csrfmiddlewaretocken':token,       //csrf
+        //'csrfmiddlewaretocken':"{{csrf_token}}"   //csrf
     },
     traditional:true,   //数据若是复杂结构, 需要加
     processData:true,  //是否对数据预处理

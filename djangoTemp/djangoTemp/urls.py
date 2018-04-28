@@ -29,6 +29,7 @@ urlpatterns = [
     #name="Articles"表示路径的别名,防止后台更改引起前端更改.前端写法: {% url "Articles" %}
     
     url(r'^admin/', admin.site.urls),   #后台管理页
+    #url(r'^login$', views.loginClass.as_view()),     #绑定类
     url(r'^index', views.func),  #通过index网页访问, views.func处理响应
     url(r'article/<int:article>', views.Article_D, name='Articles'),    #传入参数:int article和定义时相同名称
 ]

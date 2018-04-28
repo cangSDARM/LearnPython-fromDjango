@@ -10,7 +10,9 @@
     <body>
         {% block content %}
         {% endblock %}
-
+        <form action="/index.html" method="POST">
+            {% csrf_token %}
+        </form>
         {% block footer %}
             <p class="cap"></p> {# 子模板有可能替换部分 #}
         {% endblock %}
