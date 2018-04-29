@@ -1,9 +1,9 @@
-//如果是jquery对象,需在变量名前加$
+//如果是jquary对象,需在变量名前加$
 //语法类似css, 支持链式操作
 
 jQuary; //jQuary对象, 可以简写为$
 
-//参考文档: jquery.cuishifeng.cn/
+//参考文档: jquary.cuishifeng.cn/
 
 /*
  ----------------------- 选择器 ----------------------
@@ -33,7 +33,12 @@ jQuary; //jQuary对象, 可以简写为$
  *  $("div").siblings()
 */
 
-//jquery循环
+//jquary事件
+$("parent").on("event", "object", function(){
+    //实现动态绑定event
+});
+
+//jquary循环
 $.each(loopArray, function(index, value){
     console.log(index + ":" + value);
 })
