@@ -55,7 +55,7 @@ xmlHttpRequest.onreadystatechange = function(){ // 指定监听函数, 在对象
 
 //---------------------------------基于jQuary
 //-------------$.ajax()
-// -1
+// -1 --------------------
 token = $('[name = "csrfmiddlewaretocken"]').val()
 $.ajax({
     url:"/index",
@@ -82,7 +82,7 @@ $.ajax({
         "403":function(){}
     }
 });
-// -2
+// -2 ---------------------
 $.ajax(
     url("/index"),
     type("POST"),
@@ -98,3 +98,12 @@ $.post("/index", {name:"alex"}, function(data, statusTest, jqh){     //post(url,
 $.get();    //get(url, [data], [callback], [type])
 $.getJSON();    //type=Json的get
 $.getscript();  //getscript(scriptURL, callback) 在callback中调用外部js文件的function
+
+// ------------------- AJAX不能直接传递文件, 需借助FormData
+var formdata = new FormData();
+formdata.append("key", "value");    //FormData本质是一个字典
+formdata.append("file", document.getElementById("file").Files[0]);  //添加文件对象
+xmlHttpRequest.send(formdata);  //AJAX-JS传递
+$.post("/index", {data:formdata},   //AJAX-JQ传递
+    processData=false, //tell jquary not to process the data
+    contentType=false);  //tell jquary not to set contentType

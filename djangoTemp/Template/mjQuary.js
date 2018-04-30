@@ -33,6 +33,11 @@ jQuary; //jQuary对象, 可以简写为$
  *  $("div").siblings()
 */
 
+//DOM和jquary互转
+obj = document.getElementById("c");
+$(obj)      //DOM转jquary
+$('#c')[0]  //jquary转DOM
+
 //jquary事件
 $("parent").on("event", "object", function(){
     //实现动态绑定event

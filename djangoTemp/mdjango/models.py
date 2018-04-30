@@ -61,6 +61,7 @@ class Article(models.Model):
     response2 = models.Article.objects.filter(id=1)
     response3 = models.Article.objects.filter(id__lt=10, id__gt=1)   # 获取id大于1 且 小于10的值
     models.Article.objects.filter(id__in=[11, 22, 33])   # 获取id等于11、22、33的数据
+# exclude相当于在filter后取反
     models.Article.objects.exclude(id__in=[11, 22, 33])  # not in
 # 获取单个对象
     response3 = models.Article.objects.get(id=1)     #获取对象, 不推荐, 其它方式都时获取的queryset
