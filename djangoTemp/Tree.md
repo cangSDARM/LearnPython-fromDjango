@@ -10,7 +10,7 @@
         |       |-  views.py        视图(模板语言, cookie)
         |       |-  apps.py
         |       |-  models.py       模型(数据库操作)
-        |       |-  tests.py
+        |       |-  tests.py        测试(Form验证)
         |       |-  migrations
         |-  Template                模板
         |-  Statics                 JS,CSS,img等静态文件路径
