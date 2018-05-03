@@ -86,6 +86,8 @@ $.ajax({
 $.ajax(
     url("/index"),
     type("POST"),
+    data($("#form1").seralize()),    //form表单(id=form1), 自动序列化所有form内容为json数据发送
+    traditional(true)               //seralize要加
 );
 //-------------简单方式
 $.post("/index", {name:"alex"}, function(data, statusTest, jqh){     //post(url, [data], [callback], [type:text/html/json/script])

@@ -14,6 +14,9 @@
         |       |-  migrations
         |-  Template                模板
         |-  Statics                 JS,CSS,img等静态文件路径
+        |-  Utils                   其它内容
+        |       |-  message.py      邮箱/手机发送服务
+        |       |-  CheckCode.py    验证码图片
         |-  db.sqlite3              数据库
         |-  manage.py               Django项目管理
 
