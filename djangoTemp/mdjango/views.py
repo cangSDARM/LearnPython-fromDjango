@@ -26,6 +26,7 @@ class loginClass(views.View):
 def func(req):  #req 请求头
     print('request %s' %req.GET)     #获取from表单get数据
     print('request %s' %req.POST)    #post
+    print('request environ %s', req.environ.get('HTTP_USER_AGENT')) #获取请求头中用户使用设备
     print('file %s' %req.FILES)      #上传文件时的单独封装
 
     for item in req.FILES:

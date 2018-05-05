@@ -7,7 +7,7 @@ class Article(models.Model):
     text = models.TextField()   #字符
     price = models.IntegerField()   #数字
     authors = models.ManyToManyField("Author") #多对多: 放在哪个表都行. 只能通过对象绑定(通过创建第三张表分别一对多模拟出来的)
-    publiser = models.ForeignKey("Publiser", to_field="nid")  #一对多: 谁是多, 外键在哪. to_filed: 指定外键, 必须是唯一
+    publiser = models.ForeignKey("Publiser", to_field="nid", ralated_name='re')  #一对多: 谁是多, 外键在哪. to_filed: 指定外键, 必须是唯一, ralated_name: 反向查找的名字
     oneother = models.OneToOneField("elses")  #一对一: (联合唯一的一对多)
 
 '''
