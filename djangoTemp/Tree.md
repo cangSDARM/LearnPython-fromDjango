@@ -40,6 +40,7 @@ HTTP基于请求/相应, 无状态
 * python3 manage.py startapp appName   创建app
 * python3 manage.py makemigrations 创造数据迁移
 * python3 manage.py migrate 创建表结构, Django会自动添加一个id作为主键
+* python3 manage.py migrate --fake 如果已经手动操作数据库和models时, 本地同步操作
 * python manage.py clearsessions 清除session数据库
 
 ***

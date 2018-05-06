@@ -43,3 +43,7 @@ class JsonDump(json.JSONEncoder):
             return {"code":field.code, "message":field.message}
         else:
             return json.JSONEncoder.default(self, field)
+
+#----------------------------------ModelForm---------------------------------------
+#|           高耦合, 不推荐            |
+#https://blog.csdn.net/fgf00/article/details/54917396 参考
