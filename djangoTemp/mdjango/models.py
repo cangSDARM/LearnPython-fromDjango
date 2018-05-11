@@ -63,8 +63,14 @@ class Article(models.Model):
     models.Article.objects.filter(id__in=[11, 22, 33])   # 获取id等于11、22、33的数据
 # exclude相当于在filter后取反
     models.Article.objects.exclude(id__in=[11, 22, 33])  # not in
+# 排除某列, 防止select *
+    models.Article.objects.filter().difer('name', 'id')   #排除name, id列, 取其它列
+# 只取某列
+    models.Article.objects.filter().only('name', 'id')    #只拿name和id列
 # 获取单个对象
     response3 = models.Article.objects.get(id=1)     #获取对象, 不推荐, 其它方式都时获取的queryset
+# 通过主键id查询
+    models.Article.objects.in_bulk([1,2,3])
 # 限制返回的数据 相当于 OFFSET 0 LIMIT 2;
     models.Article.objects.order_by('title')[0:2]
 # 数据排序
@@ -74,6 +80,7 @@ class Article(models.Model):
     models.Article.objects.get(title__regex=r'^(An?|The) +')
 # 关联查询
     models.Article.objects.filter(author__id = 0).values('author__name')   #Article和Author关联表
+    model.tb.objects.all().select_related('author_name')    #join连表
 # 聚合查询 aggregate
     from django.db.models import Avg, Min, Sum, Max
     models.Article.objects.all().aggregate(Avg('price'))    #在QuerySet上进行查询, 返回一个字典
@@ -88,5 +95,9 @@ class Article(models.Model):
     models.Article.objects.filter(Q(id = 3)&Q(price = '20'))  #并
     models.Article.objects.filter(~Q(price = '20'))           #非
     models.Article.objects.filter(~Q(price = '20'), title = 's')  #Q对象和条件混合, Q对象需要放前面
+# 子查询及连表查询 Extra
+    models.Article.objects.extra(select={"ise": "select col from table01 where col>%s"}, select_params=(1,2,3), where=["first like 'jeffrey%s'"], params=[1,2,3], tables=['tableName'])  #(select查询语句[select后], select参数, where条件[from后], where参数, 其它表[from后])
+# 原生SQL
+    models.Article.objects.raw(raw_query, params=None, translations=dict, using=None)   #(原生SQL语句, 参数, 转换为列名, 指定数据库)
 #---------------------------------------------------------------------------------------
 '''
