@@ -80,7 +80,9 @@ class Article(models.Model):
     models.Article.objects.get(title__regex=r'^(An?|The) +')
 # 关联查询
     models.Article.objects.filter(author__id = 0).values('author__name')   #Article和Author关联表
-    model.tb.objects.all().select_related('author_name')    #join连表
+# 取得字符串或列表
+    models.Article.objects.all().values()   #字典
+    models.Article.objects.all().values_list()  #列表
 # 聚合查询 aggregate
     from django.db.models import Avg, Min, Sum, Max
     models.Article.objects.all().aggregate(Avg('price'))    #在QuerySet上进行查询, 返回一个字典
@@ -98,6 +100,26 @@ class Article(models.Model):
 # 子查询及连表查询 Extra
     models.Article.objects.extra(select={"ise": "select col from table01 where col>%s"}, select_params=(1,2,3), where=["first like 'jeffrey%s'"], params=[1,2,3], tables=['tableName'])  #(select查询语句[select后], select参数, where条件[from后], where参数, 其它表[from后])
 # 原生SQL
-    models.Article.objects.raw(raw_query, params=None, translations=dict, using=None)   #(原生SQL语句, 参数, 转换为列名, 指定数据库)
+    models.Article.objects.raw(raw_query, params=None, translations=dict, using=None)   #(原生SQL语句, 参数, 转换关系[其它表有key则转成value], 指定数据库)
+# ------------------------------性能优化
+# join
+    #表层ORM的sql查询时才会执行sql, 但外键多时速度变慢. 一次性join获取相关连数据
+    models.Article.objects.all().select_related('外键字段__外键的外键字段')
+# 多次sql拼接
+    #原生sql的大量连表操作时速度变慢. 多次sql后在python里拼接
+    models.Article.objects.all().prefetch_related('外键字段')
+# 工具
+    pip install django-debug-toolbar
+    register 'debug_toolbar' to apps in settings.py
+    put "debug_toolbar.middleware.DebugToolbarMiddleware" to middleware
+    add "INTERNAL_IPS=('127.0.0.1',)" in settings.py
+    add 
+        "from django.conf import settings, url.include
+         if settings.DEBUG:
+             import debug_toolbar
+             urlpatterns += { url(r'^__debug__/', include(debug_toolbar.urls)),}
+        "
+        in urls.py
+    must use render(request, 'index')
 #---------------------------------------------------------------------------------------
 '''
