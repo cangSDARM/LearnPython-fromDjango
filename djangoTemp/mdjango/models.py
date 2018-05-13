@@ -2,6 +2,7 @@ from django.db import models
 
 # 管理数据库
 # Create your models here.
+# 内部验证流程: full_clean() -> 字段正则 -> clean()
 class Article(models.Model):
     title = models.CharField(max_length = 30)   #最长30字符的字段, 相当于varchar, 参数与sql相似, 具体查看__init__方法
     text = models.TextField()   #字符
@@ -10,6 +11,8 @@ class Article(models.Model):
     publiser = models.ForeignKey("Publiser", to_field="nid", ralated_name='re')  #一对多: 谁是多, 外键在哪. to_filed: 指定外键, 必须是唯一, ralated_name: 反向查找的名字
     oneother = models.OneToOneField("elses")  #一对一: (联合唯一的一对多)
 
+    def clean(self):    #钩子函数
+        pass
 '''
 #--------------------------数据库操作-ORM：Object Relational Mapping(关系对象映射)-----------------------
 #数据库查询objects返回一个QuerySet对象

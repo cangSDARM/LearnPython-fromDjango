@@ -2,20 +2,33 @@ from django.test import TestCase
 
 # Create your tests here.
 #-------------------------------Django Form验证-----------------------------------
-#|      简化后端验证步骤     |
+#|                           简化后端验证步骤                              |
+#| 内部验证流程: is_valid() -> full_clean()                               |
+#|                                     -> 每个字段的正则及clean_字段名()    |
+#|                                     -> _clean_form -> clean()        |
+#|                                     -> _post_clean()                 |
 #-------------------------------定义模板
 from django import forms
 from django.forms import fields, widgets
+from django.forms import models as modelforms
+from mdjango import models
 class myForm(forms.Form):
     user = forms.CharField(min_length=6)    #前端form的name必须和属性名一致
     email = forms.EmailField(error_messages={'requird':"空错误", 'invalid':"格式错误", 'min_length':"长度限制错误"}) #自定义错误信息, key值Django内部定义
     favor = forms.ChoiceField(choices=[(1, "value1"), (2, "value2")])    #下拉框
     sport = forms.MultipleChoiceField()     #多选框
     sex = fields.IntegerField(widget=widgets.Select(attrs={"class", "c"}))  #使用widgets复合类型和属性
+    sex2 = modelforms.ModelChoiceField(queryset=models.Article.objects.all())   #和sex效果一样且自动更新
 
     def __init__(self, *args, **kwargs):
         super(myForm, self).__init__(*args, **kwargs)
         self.fields['sex'].widget.choices = models.Algbor.objects.all().values_list('id','caption')    #动态获取数据库数据, 否则只会在程序启动时获取一次
+
+    def clean(self):    #钩子函数(raise异常)
+        pass
+    
+    def _post_clean(self):  #钩子函数
+        pass
 
 #https://www.cnblogs.com/liaoboshi/p/6576188.html 常用fields和属性方法
 #-------------------------------使用模板
