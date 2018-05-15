@@ -12,6 +12,7 @@
         |       |-  models.py       模型(数据库操作)
         |       |-  tests.py        测试(Form验证)(如果程序只有一个项目, 则参考ModelForm)
         |       |-  migrations
+        |       |-  Middleware.py   (自己添加)中间件
         |-  Template                模板
         |-  Statics                 JS,CSS,img等静态文件路径
         |-  Utils                   其它内容
