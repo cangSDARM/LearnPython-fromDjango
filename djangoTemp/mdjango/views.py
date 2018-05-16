@@ -162,6 +162,7 @@ def temlateLangue(req):
 -----------------------------------------防治跨站攻击验证
  前端:
     {% csrf_token %}    #form表单需要
+    (详情: Middleware.py)
 -----------------------------------------起别名
  前端:
     {% with f=slllllllllllllijweo %}  #和python的with用法相同

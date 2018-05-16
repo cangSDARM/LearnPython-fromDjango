@@ -26,5 +26,30 @@ class CommentMiddleWare(MiddlewareMixin):
 
     def process_request(self, request):         #访问views
         pass
+    
+    def process_view(self, request, view_func, view_args, view_kwargs):  #路由匹配(所有process_request执行完后再按顺序调用process_view)
+        pass
+    
+    def process_template_response(self, request, response): #render渲染时匹配.html
+        pass
+
+    def process_exception(self, request, exception):    #异常处理(处理views异常)
+        pass
+
     def process_response(self, request, response):  #返回用户
         return response     #必须返回response
+#----------------------------------------------------------------------------------------------------------
+
+#------------------------------------------CSRF跨站信息伪造--------------------------------------------------
+#|                  原理: get请求发送凭证 -> 提交post请求 -> CSRF验证
+#|                  views里必须用render
+#|                  Ajax里
+#|                      function csrfSafeMethod(method){    //只是POST提交时加csrftoken
+#|                          return (/^(GET|HEAD|OPTIONS|TRACE)$/.text(method));
+#|                      }
+#|                      $.ajaxsetup({       //为所有ajax提交添加csrftoken
+#|                          beforeSend:function(xhr, settings){
+#|                              if(!csrfSafeMethod(settings.type)&& !this.crossDomain) xhr.setRequestHeader("X-CSRFToken", $.cookie('csrftoken'));
+#|                          }
+#|                      });
+#----------------------------------------------------------------------------------------------------------
