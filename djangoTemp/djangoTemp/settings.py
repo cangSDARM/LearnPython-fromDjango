@@ -148,7 +148,7 @@ SESSION_FILE_PATH = None  # 缓存文件路径, 如果为None, 则使用tempfile
 
 #缓存 redis memcache
 #SESSION_ENGINE = 'django.contrib.sessions.backends.cache'        # 引擎
-#SESSION_CACHE_ALIAS= 'default'  #使用的缓存别名, 默认内存缓存
+#SESSION_CACHE_ALIAS= 'default'  #使用的缓存别名(CACHE={'default':{}}), 默认内存缓存
 
 #缓存+数据库 读(先读内存, 内存没有读取数据库, 存到内存). 写(先写内存再写数据库)
 #SESSION_ENGINE='django.contrib.sessions.backends.cached_db'        # 引擎

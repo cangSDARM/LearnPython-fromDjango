@@ -40,16 +40,23 @@ class CommentMiddleWare(MiddlewareMixin):
         return response     #必须返回response
 #----------------------------------------------------------------------------------------------------------
 
+'''
 #------------------------------------------CSRF跨站信息伪造--------------------------------------------------
-#|                  原理: get请求发送凭证 -> 提交post请求 -> CSRF验证
-#|                  views里必须用render
-#|                  Ajax里
-#|                      function csrfSafeMethod(method){    //只是POST提交时加csrftoken
-#|                          return (/^(GET|HEAD|OPTIONS|TRACE)$/.text(method));
-#|                      }
-#|                      $.ajaxsetup({       //为所有ajax提交添加csrftoken
-#|                          beforeSend:function(xhr, settings){
-#|                              if(!csrfSafeMethod(settings.type)&& !this.crossDomain) xhr.setRequestHeader("X-CSRFToken", $.cookie('csrftoken'));
-#|                          }
-#|                      });
+|                  原理: get请求发送凭证 -> 提交post请求 -> CSRF验证
 #----------------------------------------------------------------------------------------------------------
+Ajax里
+    function csrfSafeMethod(method){    //只是POST提交时加csrftoken
+        return (/^(GET|HEAD|OPTIONS|TRACE)$/.text(method));
+    }
+    $.ajaxsetup({       //为所有ajax提交添加csrftoken
+        beforeSend:function(xhr, settings){
+            if(!csrfSafeMethod(settings.type)&& !this.crossDomain){
+                xhr.setRequestHeader("X-CSRFToken", $.cookie('csrftoken'));
+            } 
+        }
+    });
+View里
+    必须render
+    @csrf_protect: 强制CSRF验证, 即使全局禁用
+    @csrf_exempt:  取消CSRF验证, 即使全局使用
+'''

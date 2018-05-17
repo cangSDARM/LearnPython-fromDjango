@@ -7,12 +7,14 @@
         |       |-  wsgi.py         服务器使用WSGI部署的文件
         |-  application             app
         |       |-  admin.py
-        |       |-  views.py        视图(模板语言, cookie)
+        |       |-  views.py        视图(模板语言, cookie和session)
         |       |-  apps.py
-        |       |-  models.py       模型(数据库操作)
-        |       |-  tests.py        测试(Form验证)(如果程序只有一个项目, 则参考ModelForm)
+        |       |-  models.py       模型(数据库操作ORM)
+        |       |-  tests.py        测试(Form用户验证)(如果程序只有一个项目, 则参考ModelForm)
         |       |-  migrations
         |       |-  Middleware.py   (自己添加)中间件/CSRF
+        |       |-  Cache.py        (自己添加)缓存
+        |       |-  Signal.py       (自己添加)信号
         |-  Template                模板
         |-  Statics                 JS,CSS,img等静态文件路径
         |-  Utils                   其它内容
