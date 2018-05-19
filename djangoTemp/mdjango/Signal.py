@@ -29,10 +29,24 @@ Test signals(from django.test.signals import)
 Database signals(from django.db.backends.signals import)
     connection_created      #创建数据库连接时
 
-钩子的注入(链接函数)
+钩子的注入(链接函数, 数量不限)
     def callback(sender, **kwargs):     #sender:调用参数
         print('callback')
         print(sender, kwargs)
 
     xx.connect(callback)    #xx:信号名
+-------------------------------------------自定义信号-------------------------------------------------------
+|                                   自定义信号是手动触发的
+|                                   为代码提供扩展槽
+----------------------------------------------------------------------------------------------------------
+1. 定义信号
+    import django.dispatch
+    pizze_done = django.dispatch.Signal(providing_args=('toppings', 'size'))    #providing_args:触发时必须参数
+2. 注册信号
+    def callback(sender, **kwargs):
+        print('callback')
+    pizze_done.connect(callback)
+3. 触发信号
+    import pizze_done
+    pizze_done.send(sender='seven', toppings=123, size=432)
 '''

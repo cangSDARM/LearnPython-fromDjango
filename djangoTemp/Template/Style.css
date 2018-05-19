@@ -4,6 +4,8 @@
  * 脱离文档流: 将元素从文档流取出进行覆盖(position:fixed,absolute;float)
 */
 /* 匹配所有元素 */
+@charset 'utf-8';   /*指定该文档的编码方式*/
+
 * {
     margin: 0px 1px 0px 2px;
 }
@@ -101,4 +103,23 @@ p::before, p::after{
 /* :link(没有访问), :hover(鼠标覆盖), :active(按下鼠标), :visited(已访问) */
 a:link{
     position: fixed;
+}
+
+/* (only|not) 对不同的屏幕类型 and (在满足指定屏幕尺寸信息时) {修改样式} */
+@media only screen and (max_width: 800px){
+    .s2{
+        background-color: red;
+    }
+}
+
+/* 定义myFont字体和其对应路径(相对或绝对) */
+@font-face{
+    font-family: myFont;
+    src: url('Sansation_Light.ttf'),
+        url('Sansation_Light.eot'); /* IE9 */
+}
+
+/* 检测css语法支持情况, 判断的css语法有效则执行内部css */
+@supports (transform-origin: 5%) {
+    /* specific rules */
 }
