@@ -8,6 +8,12 @@ import requests
 
 from django.utils.decorators import method_decorator
 from django import views
+
+#-----------------------------------------------CSV, class based view
+#路由
+#   url(r^'^student/', view.StudentView.as_view())
+@method_decorator(csrf_protect, name="dispatch")
+@method_decorator(csrf_except, name="dispatch")
 class loginClass(views.View):
     #可选函数名 = ['get', 'post', 'put', 'patch', 'delete', 'head', 'options', 'trace']
     #分发. 所有方法的装饰器
@@ -21,6 +27,7 @@ class loginClass(views.View):
     def get(self, request, *args, **kwargs):
         pass
 
+#-----------------------------------------------FSV, function based view
 #@csrf_exempt  #免除csrf检查
 @csrf_protect   #使用csrf检查
 def func(req):  #req 请求头
@@ -135,7 +142,7 @@ $.removeCookie('the_cookie', null);
 #------------------------------------模板语言:Django转化为python代码解析--------------------------------
 def temlateLangue(req):
     time = datetime.datetime.now()  #后端动态数据
-    
+
     return render(req, "temp.html", {"d":time})
     #render(request, template, context)
     #   template:
@@ -209,7 +216,7 @@ def temlateLangue(req):
     {{ list.2 }}    #4, 后端的属性/数组/字典/元祖等负杂数据结构都可以通过.调用
  后端:
     list = [
-        {"username":"xxx", "sex":1, "email":000}, 
+        {"username":"xxx", "sex":1, "email":000},
         {"username":"yyy", "sex":1, "email":111},
         4,
     ]
