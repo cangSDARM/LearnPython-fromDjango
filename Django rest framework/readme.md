@@ -17,7 +17,7 @@ class MAuthentication(object):
         if not token:
             #前端需要: /api/XXX/?token=XXX
             raise exceptions.AuthenticationFailed("用户认证失败")     #发送失败json: {"detail":"用户认证失败"}
-        return ("user", None)   #使用: request.user
+        return ("user", None)   #使用: (request.user, request.auth)
 
     def authenticate_header(self):
         pass
@@ -27,6 +27,7 @@ class MAuthentication(object):
 class MView(APIView):
     authentication_classes = [MAuthentication]
     def get(self, request, *args, **kwargs):
-        # 返回之前通过MAuthentication验证
+        # 先通过dispatch分发, 封装request, 读取验证类
+        # 之后通过MAuthentication验证
         return HttpResponse(json.dumps({code:"0"}), status=200)
 ```
